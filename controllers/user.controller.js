@@ -47,6 +47,6 @@ module.exports = {
         }
     },
     logout: async (req,res) => {
-        res.clearCookie('userToken').json({message:'User is logged out'})
+        res.clearCookie('userToken', {secure: true, sameSite: 'none'}).json({message:'User is logged out'})
     }
 }
