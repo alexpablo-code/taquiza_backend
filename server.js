@@ -1,11 +1,14 @@
 const express = require('express');
 const app = express();
+const PORT = process.env.PORT || 8000
+//when we deploy it it might have port it will run on in environments
+const corsOptions = require('./config/corsOptions')
 
 require('dotenv').config();
 const cookieParser = require('cookie-parser')
 
 const cors = require('cors');
-app.use(cors({credentials:true, origin:'http://localhost:3000'}));
+app.use(cors(corsOptions));
 app.use(cookieParser())
 
 require('./config/mongoose.config');
@@ -17,4 +20,4 @@ require('./routes/products.routes')(app);
 require('./routes/user.routes')(app);
 
 
-app.listen(8000, () => console.log("The server is all fired up on port 8000"));
+app.listen(PORT, () => console.log(`The server is all fired up on port ${PORT}`)); 
