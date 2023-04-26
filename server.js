@@ -18,6 +18,9 @@ app.use(express.json(), express.urlencoded({extended: true}));
 
 require('./routes/products.routes')(app);
 require('./routes/user.routes')(app);
+require('./routes/menu.routes')(app);
+require('./routes/category.routes')(app);
+require('./routes/item.routes')(app);
 
 
 app.listen(PORT, () => console.log(`The server is all fired up on port ${PORT}`)); 
